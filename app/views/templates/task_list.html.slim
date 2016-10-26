@@ -11,6 +11,11 @@
       ' |
       a(href="" ng-class="{active: sortMethod == dueDateNullLast}" ng-click="changeSortMethod(dueDateNullLast)")
         ' due date
+    - if current_user.provider == 'facebook'
+      p
+        a.btn.btn-medium.font-bold(socialshare socialshare-provider="facebook" socialshare-via="568895066634006" socialshare-type="feed" socialshare-text="{{list.name}}"  socialshare-description="{{getListContent(list)}}" socialshare-url="http://www.mydomain.com" socialshare-popup-height="300" socialshare-popup-width="400" socialshare-trigger="click")
+          ' Share on Facebook
+
   div.panel.panel-info.task-list
     div.panel-heading     
       editablespan(model="list.name" on-ready="listNameEdited(list.name)" input-class="form-control" span-class="list-name")
