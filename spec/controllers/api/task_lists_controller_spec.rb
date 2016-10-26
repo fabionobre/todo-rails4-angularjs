@@ -52,7 +52,8 @@ describe Api::TaskListsController do
 
         it "should return json of the just created record" do
           post_create
-          json_response["id"].should == be_an(Integer)
+
+          expect(json_response["id"]).to be_a_kind_of(Integer) 
           json_response["name"].should == "My new list"          
         end
 
