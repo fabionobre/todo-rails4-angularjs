@@ -1,4 +1,4 @@
-angular.module('todoApp').controller "TodoListController", ($scope, $timeout, $routeParams, Task, TaskList) ->
+angular.module('todoApp').controller "TodoListController", ($scope, $timeout, $routeParams, Task, TaskList, Socialshare) ->
   $scope.sortMethod = 'priority'
   $scope.sortableEnabled = true
 
@@ -55,6 +55,15 @@ angular.module('todoApp').controller "TodoListController", ($scope, $timeout, $r
 
   $scope.dueDateNullLast = (task) ->
     task.due_date ? '2999-12-31'
+
+  $scope.getListContent = (list) ->
+    listContent = ""
+    angular.forEach list.tasks, (task) ->
+      listContent += task.description
+      if task.due_date != null && task.due_date != undefined
+        listContent += ' (Due Date: ' + task.due_date + ')'
+      listContent += "; "
+    return listContent;
 
   serverErrorHandler = ->
     alert("There was a server error, please reload the page and try again.")
