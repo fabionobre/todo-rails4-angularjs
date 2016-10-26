@@ -1,5 +1,6 @@
 Todo::Application.routes.draw do
-  devise_for :users  
+  
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }  
 
   namespace :api, defaults: {format: :json} do
     devise_scope :user do
@@ -12,7 +13,7 @@ Todo::Application.routes.draw do
 
   root :to => "home#index"
 
-  get '/dashboard' => 'templates#index'
+  get '/dashboard' => 'templates#index', :as => :dashboard
   get '/task_lists/:id' => 'templates#index'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
 end

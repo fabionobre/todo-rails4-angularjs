@@ -8,6 +8,8 @@
   <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", :class => "form-control" %>
 
   <%= f.submit "Sign up", :class => "btn btn-lg btn-primary btn-block" %>
+
+  <%= render "devise/shared/social" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
